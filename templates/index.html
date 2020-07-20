@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Abalone age prediction</title>
+    <link rel="stylesheet" href="/static/css/main.css" type="text/css">
+  </head>
+  <body>
+    
+    <form action="/age" method="POST">
+    <fieldset>
+    <legend>Shell Weight</legend>
+      <input type="number" name="shell_weight" step="0.01"/>
+      </fieldset>
+      <fieldset>
+      <legend>Viscera Weight</legend>
+      <input type="number" name="viscera_weight" step="0.01"/>
+      </fieldset>
+      <fieldset>
+      <legend>Shucked Weight</legend>
+      <input type="number" name="shucked_weight" step="0.01"/>
+      </fieldset>
+      <fieldset>
+      <legend>Whole Weight</legend>
+      <input type="number" name="whole_weight" step="0.01"/>
+      </fieldset>
+      <fieldset>
+      <legend>Height</legend>
+      <input type="number" name="height" step="0.01"/>
+      </fieldset>
+      <fieldset>
+      <legend>Length</legend>
+      <input type="number" name="length" step="0.01"/>
+      </fieldset>
+      <fieldset>
+      <legend>Diameter</legend>
+      <input type="number" name="diameter" step="0.01"/>
+      </fieldset>
+      <fieldset>
+      <legend>Gender</legend>
+        <select name="sex">
+          <option value="M">Male</option>
+          <option value="F">Female</option>
+          <option value="I">Infant</option>
+        </select>
+      </fieldset>  
+      <p><input type="submit" value="Submit" /></p>
+    </form>
+
+  </body>
+</html>
+
+
+
+
