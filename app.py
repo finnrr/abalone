@@ -1,10 +1,12 @@
 import flask
 import pickle
 import pandas as pd
+import flask_debugtoolbar
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 
+#initalize flask
 app = flask.Flask(__name__)
 
 # debug console, set to Ture for debug
@@ -19,14 +21,16 @@ limiter = Limiter(
     default_limits=["2 per minute", "1 per second"],
 )
 
+#load prediction model
 pipe = pickle.load(open("pipe.pkl", 'rb'))
 
+#initalize homepage
 @app.route('/')
 @limiter.limit("20 per minute")
 def index():
     return flask.render_template('index.html')
 
-
+#initalize results page
 @app.route('/age', methods=['POST'])
 @limiter.limit("6 per minute")
 def predict_age():
@@ -45,5 +49,6 @@ def predict_age():
     prediction = str(round(pipe.predict(data)[0], 1))
     return flask.render_template('result.html', prediction=prediction)
 
+#run the webapp
 if __name__ == '__main__':
     app.run(port=5001, debug=True)
